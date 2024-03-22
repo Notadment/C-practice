@@ -1,0 +1,202 @@
+﻿@{
+    ViewData["Title"] = "User";
+}
+
+
+
+
+
+ <link rel="icon" href="../wwwroot/img/logo.png"> 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    </link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script> 
+
+<script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    </link>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+@* < script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>   *@
+
+    <script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/styleTemplate.css">
+    <link rel="stylesheet" href="~/css/mainPage.css">
+    <link rel="stylesheet" href="~/css/stylepostpop.css">
+    <link rel="stylesheet" href="~/css/user_Carousel.css">
+
+
+    <div id="FixedLeft">
+        <!-- 這是左邊的BAR，刪掉你就沒有左邊的BAR了 -->
+    </div>
+
+    <div id="FixedRight">
+        <!-- 這是右邊的BAR，你可以把這個Div刪除得到額外的空間。 -->
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div id="leftBar" class="col-2">
+                <!-- 這裡面的東西通常看不到 -->
+                <!-- FixedLeft 佔住的空間  -->
+            </div>
+            <div id="middleBar" class="col-7">
+                <!-- 背景顏色 #eef 會呈現 #middleBar 目前的大小 -->
+                <!-- 這裡是中間，隨便你寫 -->
+               @*  <div class="user_carousel d-flex col-12">
+                    <div id="carouselContainer" class="user_container">
+                        <!-- 以下是畫面架構，可以在這邊先停整再丟到JS裡面 -->
+                    </div>
+                    <div id="carouselLeftBtn" class="btnContainer me-auto">
+                        <button class="btn prevBtn"><i class="bi bi-chevron-left"></i></button>
+                    </div>
+                    <div id="carouselRightBtn" class="btnContainer ms-auto">
+                        <button class="btn nextBtn"><i class="bi bi-chevron-right"></i></button>
+                    </div>
+                </div> *@
+                <div class="postContainer">
+                    <ul id="postContent">
+                        <!-- 以下是畫面架構，可以在這邊先調整再丟到JS裡面 -->
+                    </ul>
+                    <li>
+                        <div class="con">
+                            <div class="end_img">
+                                <img src="~/img/end.png" alt="">
+                            </div>
+                            <div class="text_pos">
+                                <p>已經沒有新的貼文</p>
+                                <button id="seeMore">滑鼠滾輪以顯示更多之前的貼文</button>
+                                <p>按<a style="color: skyblue !important;" href="">這裡</a>來更新你的近況</p>
+                            </div>
+                            <div class="endLine"></div>
+                        </div>
+                    </li>
+                </div>
+            </div>
+            <div id="rightBar" class="col-3">
+                <!-- 這裡面的東西通常看不到 -->
+                <!-- FixedRight 佔住的空間  -->
+                <!-- 這裡按不到，FixedRight才按得到  -->
+                <!-- 右邊的FIXED佔住的空間，如果把FixedRight刪除，這欄會被隱藏然後middleBar會變成col-10 -->
+            </div>
+        </div>
+    </div>
+    <!-- popup內容 -->
+    <!-- 下面是彈出框 -->
+    <div id="postbackground" class="row align-items-center justify-content-center" style="display: none;">
+        <div id="postpopblock">
+            <div id="postblockleft">
+                <img id="postblockimg" src="">
+                <button id="poppostleftarr">&larr;</button>
+                <button id="poppostrightarr">&rarr;</button>
+            </div>
+            <div id="postblockright">
+                <a id="postaccount">
+
+                    <div id="accountimgblock">
+                        <img id="poppostaccountimg" src="">
+                    </div>
+                    <div id="accountnameblock">
+                        <div id="poppostaccountname"></div>
+                    </div>
+
+
+
+                </a>
+                <div id="posttext">
+                    <ul id="posttextblock">
+                        <li class="posttextblockcontext">
+                            <div class="posttextimgblock">
+                                <img id="popposterimg" class="posttextimg" src="">
+                            </div>
+                            <div class="posttextaccount">
+                                <span id="popposteraccount">hiimpoca</span>
+                                <a href="#/" class="bi bi-trash" id="popposterdelete"></a>
+                            </div>
+                            <div class="posttextpost">
+                                <span id="poppostertext">
+                                </span>
+                                <br>
+                                <span id="poppostertime"></span>
+                                <hr>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="postselection">
+                    <div class="postselectionblock">
+                        <i id="poppostlike" class="bi bi-heart postselectionicon"></i>
+                        <i id="poppostshare" class="bi bi-box-arrow-right postselectionicon"></i>
+                        <i id="poppostcollect" class="bi bi-bookmark postselectionicon"></i>
+                    </div>
+                </div>
+                <div id="postfollow">
+                    <div id="popoutpostfollowblock"><b id="popposttotallike"></b></div>
+
+
+                    <div id="poppostlatestlikettime"></div>
+
+
+                </div>
+                <div id="postmessg">
+                    <input class="postmessginput" type="text" placeholder="留言...">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- 彈出框到這 -->
+    <!-- 按讚的彈框 -->
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title" style="margin-left: auto;">貼文按讚的人</h4>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div id="likesBlock" class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 彈框結尾 -->
+        <!-- 這個是呈現用JS檔，請留著 -->
+
+        <script>
+var rightBarBreakPoint = 900;
+var leftBarBreakPoint = 650;
+</script>
+
+        <script src="~/js/resize.js"></script>
+        <script src="~/js/mainPage.js"></script>
+        <!-- 控制顯示更多文章的東西 -->
+        <!-- 按讚清單 -->
+        <!--        <script src="./js/following.js"></script>-->
+        <!-- 載入popoutpost js 程式 -->
+         @* <script src="~/js/user_Carousel.js"></script> *@
+        <!-- 控制Truncate文字截斷 -->
+        <script>
+function toggleTruncate(elementId) {
+    var truncatedText = document.getElementById(elementId);
+    truncatedText.classList.toggle('truncate_text');
+}
+</script>

@@ -1,0 +1,179 @@
+﻿@{
+    ViewData["Title"] = "Chart";
+}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+
+<div>
+    <div>
+        <form method="post">
+            <h1>會員查詢</h1>
+            <hr />
+            <div class="">
+                <label for="inputkey">
+
+                    <span class="fs-4">帳戶名稱:</span>
+                </label>
+                <input class="m-1 fs-6" type="text" id="inputkey" name="searchInput" placeholder="輸入搜尋內容" style="width: 70%;" />
+            </div>
+            <br />
+            <label class="m-1 fs-4" for="sex">選擇性別：</label>
+            <select id="sex" class="fs-5">
+                <option value="4" selected>性別</option>
+                <option value="0">男</option>
+                <option value="1">女</option>
+                <option value="2">不詳</option>
+            </select>
+            <br />
+            <span class="fs-4">日期範圍：</span>
+            <select class="m-1 fs-5" id="smonth">
+                <option value="0">請選擇月份</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            從
+            <select class="m-1 fs-5" id="sday">
+                <option value="0">請選擇日期</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            到
+            <select class="m-1 fs-5" id="endmonth">
+                <option value="0">請選擇月份</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <select class="m-1 fs-5" id="endday">
+                <option value="0">請選擇日期</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                <option value="24">24</option>
+                <option value="25">25</option>
+                <option value="26">26</option>
+                <option value="27">27</option>
+                <option value="28">28</option>
+                <option value="29">29</option>
+                <option value="30">30</option>
+                <option value="31">31</option>
+            </select>
+            <br />
+            <div class="d-flex">
+                <input class="btn bg-primary text-light m-2" type="button" id="getsearch" value="查詢">
+
+
+            </div>
+        </form>
+                <button id="outexcel" class="bg-success btn text-light m-2 ms-auto">EXCEL下載</button>
+                <button id="toPDF" class="bg-danger text-light btn m-2">PDF 下載</button>
+
+
+
+
+
+
+
+    </div>
+    <hr />
+    <div class="container" id="listcontent" style="">
+    </div>
+</div>
+<hr />
+
+@*< div class="row">
+    <div class="col-sm-6">
+        <div class=" card" style="border:none !important">            
+            
+                <canvas class="my-4 h-25" id="bar"></canvas>
+            
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class=" card" style="border:none !important">
+
+            <canvas class="my-4 h-25" id="pie"></canvas>
+            
+        </div>
+    </div>
+</div> *@
+
+
+<script src="https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js"></script>
+<script src="~/js/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdn.bootcss.com/jspdf/1.3.4/jspdf.debug.js"></script>
